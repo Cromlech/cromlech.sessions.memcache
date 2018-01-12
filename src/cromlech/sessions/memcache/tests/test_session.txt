@@ -74,7 +74,7 @@ From that, we can instanciate our middleware :
 Timeout
 -------
 
-    >>> handler = MemcacheStore(redis, 1)
+    >>> handler = MemcacheStore(memcache, 1)
     >>> handler.set('test', {'test': 'this is a test'})
     >>> handler.get('test')
     {'test': 'this is a test'}

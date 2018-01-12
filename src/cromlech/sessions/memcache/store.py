@@ -15,6 +15,9 @@ class MemcacheStore(Store):
         self.marshaller = marshaller
         self.prefix = prefix
 
+    def __iter__(self):
+        raise NotImplementedError
+
     def get(self, sid):
         key = self.prefix + sid
         data = self.memcache.get(key)
@@ -37,6 +40,8 @@ class MemcacheStore(Store):
         key = self.prefix + sid
         self.memcache.delete(key)
 
+    delete = clear
+        
     def touch(self, sid):
         key = self.prefix + sid
         self.memcache.touch(key, expire=self.delta)
