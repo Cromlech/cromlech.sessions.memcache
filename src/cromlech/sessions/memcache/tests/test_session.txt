@@ -1,10 +1,14 @@
 The application
 ---------------
 
+    >>> sid = None
+
     >>> def simple_app(environ, start_response):
     ...     """retained visited path, raise exception if path contain 'fail'
     ...     """
     ...     session = environ['sess']
+    ...     global sid
+    ...     sid = session.sid
     ...     session['my_value'] = session.get('my_value', 0) + 1
     ...     session.save()
     ...     start_response('200 OK', [('Content-type', 'text/plain')])
@@ -50,7 +54,9 @@ From that, we can instanciate our middleware :
     >>> result.body
     b'Called 1 time(s)'
 
-    >>> sid = sessions[0]
+In our tests, sid was saved in a global variable
+when is the application is run:
+
     >>> handler.get(sid)
     {'my_value': 1}
 
@@ -63,8 +69,12 @@ From that, we can instanciate our middleware :
     >>> result.body
     b'Called 1 time(s)'
 
+    >>> handler.get(sid)
+    {'my_value': 1}
+
     >>> handler.clear(sid)
     >>> handler.get(sid)
+    {}
 
 Timeout
 -------
