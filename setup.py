@@ -9,12 +9,12 @@ install_requires = [
     'setuptools',
     'cromlech.session',
     'cromlech.marshallers',
-    'pymemcache >= 1.4.0',
 ]
 
 tests_require = [
     'WebTest',
     'pytest',
+    'pymemcache >= 1.4.0',
 ]
 
 setup(

@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from cromlech.session import SessionHandler
+from cromlech.session import Store
 from cromlech.marshallers import PickleMarshaller
 
 
-class MemcacheSessionHandler(SessionHandler):
+class MemcacheStore(Store):
     """Memcached based HTTP session.
     """
 
