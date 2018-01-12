@@ -50,9 +50,6 @@ From that, we can instanciate our middleware :
     >>> result.body
     b'Called 1 time(s)'
 
-    >>> sessions = list(iter(handler))
-    >>> assert len(sessions) == 1
-
     >>> sid = sessions[0]
     >>> handler.get(sid)
     {'my_value': 1}
@@ -67,9 +64,7 @@ From that, we can instanciate our middleware :
     b'Called 1 time(s)'
 
     >>> handler.clear(sid)
-    >>> sessions = list(iter(handler))
-    >>> assert len(sessions) == 0
-
+    >>> handler.get(sid)
 
 Timeout
 -------
