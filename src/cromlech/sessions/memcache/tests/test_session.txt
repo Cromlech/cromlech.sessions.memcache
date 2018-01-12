@@ -29,7 +29,7 @@ redis-related in your application.
 To test, we have a very simple memcache connection :
 
     >>> from pymemcache.client.base import Client
-    >>> memcache = Client((127.0.0.1, 11211))
+    >>> memcache = Client(('127.0.0.1', 11211))
 
 From that, we can instanciate our middleware :
 
